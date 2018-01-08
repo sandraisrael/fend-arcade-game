@@ -51,16 +51,16 @@ Player.prototype.render = function(){
 
 // a handleInput() method
 Player.prototype.handleInput = function(pressedKeys){
-    if (pressedKeys === 'left'){
+    if (pressedKeys === 'left' && this.x > 33){
         this.x -= 55 
     }
-    else if (pressedKeys === 'up'){
+    else if (pressedKeys === 'up' && this.y > 18){
         this.y -= 55
     }
-    else if (pressedKeys === 'right'){
+    else if (pressedKeys === 'right' && this.x < 420){
         this.x += 55
     }
-    else if (pressedKeys === 'down'){
+    else if (pressedKeys === 'down' && this.y < 420){
         this.y += 55
     }
 };
