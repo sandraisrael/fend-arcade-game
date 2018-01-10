@@ -52,10 +52,13 @@ Player.prototype.render = function(){
 // a handleInput() method
 Player.prototype.handleInput = function(pressedKeys){
     if (pressedKeys === 'left' && this.x > 33){
-        this.x -= 55 
+        this.x -= 55; 
     }
-    else if (pressedKeys === 'up' && this.y > 18){
-        this.y -= 55
+    else if (pressedKeys === 'up'&& this.y > 18){
+        this.y -= 55;
+        if (this.y < 55){
+            this.reset();
+        }
     }
     else if (pressedKeys === 'right' && this.x < 420){
         this.x += 55
@@ -65,12 +68,18 @@ Player.prototype.handleInput = function(pressedKeys){
     }
 };
 
+Player.prototype.reset = function(){
+    console.log("reset player");
+    this.x = 200;
+    this.y = 390;
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = []
 
 // Place the player object in a variable called player
-var player = new Player(200, 380);
+var player = new Player(200, 390);
 
 
 
