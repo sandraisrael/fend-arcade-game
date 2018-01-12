@@ -79,15 +79,29 @@ Player.prototype.reset = function(){
     this.y = 390;
 }
 
-gameColumns = [ 5, 100, 200, 300, 400];
-gameRows = [ 5, 60, 140, 220, 300, 380];
+// possible X-axis positions on board
+var columns = [ 5, 100, 200, 300, 400];
+var enemyX;
 
+// possible Y-axis positions on board
+var rows = [ 60, 140, 220];
+var enemyY;
+
+var enemySpeed;
+// var possibleSpeed = []
+
+setInterval(function instances(){
+    // enemyX = columns[Math.floor(Math.random() * 5)],
+    enemyX = -15;
+    enemyY = rows[Math.floor(Math.random() * 3)],
+    enemySpeed = Math.floor(Math.random() * 100),
+    allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed)); 
+},3000)
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var allEnemies = []
-// new Enemy(0, 62, 22), new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17)
+var allEnemies = [ new Enemy(0, 62, 22), new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17) ];
 
 // Place the player object in a variable called player
 var player = new Player( 200, 380);
