@@ -19,6 +19,11 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    if (this.x === playerX && this.y === playerY){
+        console.log("a collision just occurs your player diessss")
+        reset(player);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -42,7 +47,7 @@ var playerY
 Player.prototype.update = function(){
     // You should multiply any movement by the dt parameter
     playerX = this.x;
-    playerY = this.y
+    playerY = this.y;
 }
 
 Player.prototype.render = function(){
@@ -52,19 +57,19 @@ Player.prototype.render = function(){
 // a handleInput() method
 Player.prototype.handleInput = function(pressedKeys){
     if (pressedKeys === 'left' && this.x > 33){
-        this.x -= 55; 
+        this.x -= 100; 
     }
     else if (pressedKeys === 'up'&& this.y > 18){
-        this.y -= 55;
-        if (this.y < 55){
-            this.reset();
+        this.y -= 80;
+        if (this.y < 60){
+            setTimeout(this.reset(), 2500);
         }
     }
-    else if (pressedKeys === 'right' && this.x < 420){
-        this.x += 55
+    else if (pressedKeys === 'right' && this.x < 400){
+        this.x += 100
     }
-    else if (pressedKeys === 'down' && this.y < 420){
-        this.y += 55
+    else if (pressedKeys === 'down' && this.y < 380){
+        this.y += 80
     }
 };
 
@@ -74,12 +79,18 @@ Player.prototype.reset = function(){
     this.y = 390;
 }
 
+gameColumns = [ 5, 100, 200, 300, 400];
+gameRows = [ 5, 60, 140, 220, 300, 380];
+
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [new Enemy(0, 62, 22), new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17)]
+var allEnemies = []
+// new Enemy(0, 62, 22), new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17)
 
 // Place the player object in a variable called player
-var player = new Player(200, 390);
+var player = new Player( 200, 380);
 
 
 
