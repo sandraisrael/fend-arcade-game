@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y, speed = 1) {
     // Variables applied to each of our instances go here,
 
     this.x = x;
@@ -11,18 +11,19 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+// To Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
+    this.x += 50 * this.speed * dt;
+    
+    // parseInt(this.x)+ 100 == playerX && this.y === playerY
 
-    this.x += this.speed * dt
-    // which will ensure the game runs at the same speed for
-    // all computers.
-
-    if (this.x === playerX && this.y === playerY){
-        console.log("a collision just occurs your player diessss")
-        reset(player);
+    // collison detection
+    if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
+        console.log("a collision just occurs your player diessss");
+        console.log("collision" ,this.x, playerX, playerY, this.y);
+        player.reset();
     }
 };
 
@@ -58,6 +59,7 @@ Player.prototype.render = function(){
 Player.prototype.handleInput = function(pressedKeys){
     if (pressedKeys === 'left' && this.x > 33){
         this.x -= 100; 
+        console.log(this.x);
     }
     else if (pressedKeys === 'up'&& this.y > 18){
         this.y -= 80;
@@ -74,13 +76,15 @@ Player.prototype.handleInput = function(pressedKeys){
 };
 
 Player.prototype.reset = function(){
-    console.log("reset player");
-    this.x = 200;
-    this.y = 390;
+    setTimeout(() =>{
+        console.log("reset player");
+        this.x = 200;
+        this.y = 380;
+    }, 200);
 }
 
 // possible X-axis positions on board
-var columns = [ 5, 100, 200, 300, 400];
+var columns = [ -5, -100, -200, -300, -400];
 var enemyX;
 
 // possible Y-axis positions on board
@@ -92,18 +96,23 @@ var enemySpeed;
 
 setInterval(function instances(){
     // enemyX = columns[Math.floor(Math.random() * 5)],
-    enemyX = -15;
+    enemyX = columns[Math.floor(Math.random() * 5)],
     enemyY = rows[Math.floor(Math.random() * 3)],
-    enemySpeed = Math.floor(Math.random() * 100),
+    // enemySpeed = Math.floor(Math.random() * 10),
+    enemySpeed = 1,
     allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed)); 
-},3000)
+},2500)
+
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [ new Enemy(0, 62, 22), new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17) ];
+var allEnemies = [ new Enemy(0, 60, 1), new Enemy(0, 140, 1)];
+
+// , new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17)
 
 // Place the player object in a variable called player
+// var player = new Player( -17, -13);
 var player = new Player( 200, 380);
 
 
