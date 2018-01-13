@@ -30,6 +30,9 @@ Enemy.prototype.update = function(dt) {
         console.log("a collision just occured your player diessss");  
         player.reset();
         alllives.pop();
+        if (playerPoints >= 50){
+            playerPoints -= 50;
+        }
     }
 
 };
