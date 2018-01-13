@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    font-family: 'Sedgwick Ave Display', cursive;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 .panel{
     display: flex;
@@ -24,4 +24,38 @@ body {
 
 canvas{
     margin-top: -4em; 
+}
+
+.overlay{
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    width: 505px;
+    height: 538px;
+    position: absolute;
+    top: 91px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.start-game {
+    font-family: 'Alegreya', serif;
+    position: absolute;
+    background-color: antiquewhite;
+    border-radius: 5px; 
+    left: 0;
+    right: 0;
+    top: 153px;
+    width: 420px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 1em 2em;
+}
+.start-game button{
+    background-color: royalblue;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 20px;
 }
