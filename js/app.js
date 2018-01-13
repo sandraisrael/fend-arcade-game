@@ -1,4 +1,13 @@
 var playerPoints = 0;
+// declare modal
+let modal = document.querySelector(".start-game");
+let overlay = document.querySelector(".overlay");
+
+function startGame(){
+    modal.classList.add("hide");
+    overlay.classList.add("hide");
+}
+
 // Enemies class 
 var Enemy = function(x, y, speed = 1) {
     // Variables applied to each of our instances go here,
@@ -20,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
         console.log("a collision just occured your player diessss");  
         player.reset();
-        alllives.pop()
+        alllives.pop();
     }
 
 };
@@ -113,6 +122,10 @@ Winblock.prototype.update = function(){
         playerPoints += 100;
         player.reset();
     }
+    if (allKeys.length == 5){
+        console.log("You win Game");
+        player.reset();
+    } 
 }
 
 // for scoring
@@ -166,8 +179,7 @@ var allKeys = [ ];
 var winningblocks = [ new Winblock(0, 20), new Winblock(100, 20), new Winblock(200, 20), new Winblock(300, 20), new Winblock(400, 20)];
 
 var points = new Points(350, 570)
-
-
+ 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
