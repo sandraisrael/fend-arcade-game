@@ -1,7 +1,7 @@
 let score = document.querySelector(".score")
 let points = 0;
 
-var Lives = function(x=100, y=200){
+var Lives = function(x, y){
     this.x = x;
     this.y = y
     this.sprite = 'images/Heart.png';
@@ -31,9 +31,11 @@ Enemy.prototype.update = function(dt) {
     
     // collison detection
     if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
-        console.log("a collision just occured your player diessss");
+        console.log("a collision just occured your player diessss");  
         player.reset();
+        alllives.pop()
     }
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -84,10 +86,8 @@ Player.prototype.handleInput = function(pressedKeys){
 };
 
 Player.prototype.reset = function(){
-    setTimeout(() =>{
-        this.x = 200;
-        this.y = 380;
-    }, 200);
+    this.x = 200;
+    this.y = 380;
 }
 
 // possible X-axis positions on board
