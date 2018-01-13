@@ -1,7 +1,20 @@
-// Enemies our player must avoid
+let score = document.querySelector(".score")
+let points = 0;
+
+var Lives = function(x=100, y=200){
+    this.x = x;
+    this.y = y
+    this.sprite = 'images/Heart.png';
+};
+
+Lives.prototype.render = function(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 28, 42);
+}
+
+
+// Enemies class 
 var Enemy = function(x, y, speed = 1) {
     // Variables applied to each of our instances go here,
-
     this.x = x;
     this.y = y;
     this.location = ( x, y);
@@ -11,18 +24,14 @@ var Enemy = function(x, y, speed = 1) {
     this.sprite = 'images/enemy-bug.png';
 };
 
-// To Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+// To Update the enemy's position, required method for game-Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     this.x += 50 * this.speed * dt;
     
-    // parseInt(this.x)+ 100 == playerX && this.y === playerY
-
     // collison detection
     if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
-        console.log("a collision just occurs your player diessss");
-        console.log("collision" ,this.x, playerX, playerY, this.y);
+        console.log("a collision just occured your player diessss");
         player.reset();
     }
 };
@@ -33,20 +42,17 @@ Enemy.prototype.render = function() {
 };
 
 
-
-// Now write your own player class
+// player class
 var Player = function (x, y){
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-pink-girl.png';
 };
 
-// This class requires an update(), render() and
 var playerX
 var playerY
 
 Player.prototype.update = function(){
-    // You should multiply any movement by the dt parameter
     playerX = this.x;
     playerY = this.y;
 }
@@ -55,7 +61,7 @@ Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// a handleInput() method
+// method to handleInput() 
 Player.prototype.handleInput = function(pressedKeys){
     if (pressedKeys === 'left' && this.x > 33){
         this.x -= 100; 
@@ -64,6 +70,8 @@ Player.prototype.handleInput = function(pressedKeys){
     else if (pressedKeys === 'up'&& this.y > 18){
         this.y -= 80;
         if (this.y < 60){
+            points += 100;
+            score.innerHTML = points;
             setTimeout(this.reset(), 2500);
         }
     }
@@ -77,7 +85,6 @@ Player.prototype.handleInput = function(pressedKeys){
 
 Player.prototype.reset = function(){
     setTimeout(() =>{
-        console.log("reset player");
         this.x = 200;
         this.y = 380;
     }, 200);
@@ -92,7 +99,6 @@ var rows = [ 60, 140, 220];
 var enemyY;
 
 var enemySpeed;
-// var possibleSpeed = []
 
 setInterval(function instances(){
     // enemyX = columns[Math.floor(Math.random() * 5)],
@@ -106,16 +112,13 @@ setInterval(function instances(){
 
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-var allEnemies = [ new Enemy(0, 60, 1), new Enemy(0, 140, 1)];
-
-// , new Enemy(0, 145, 25), new Enemy(0, 230, 17), new Enemy(0,310, 17)
+// allEnemies- array of all enemy objects 
+var allEnemies = [ new Enemy(-8, 60, 1), new Enemy(0, 140, 1)];
 
 // Place the player object in a variable called player
-// var player = new Player( -17, -13);
 var player = new Player( 200, 380);
 
-
+var alllives = [ new Lives(10, 540), new Lives(40, 540), new Lives(70, 540)];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
