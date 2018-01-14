@@ -8,10 +8,15 @@
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <!-- game header -->
+    <div class="header">
         <h1>ARCADE GAME</h1>
     </div>
+
+    <!-- dark overlay -->
     <div class="overlay"></div>
+
+    <!-- modal for starting the game -->
     <div class="start-game">
         <h1>Welcome to Frogger game</h1>
         <h3>Instructions</h3>
@@ -21,16 +26,19 @@
         <h4>You have 3 lives. Good luck!</h4>
         <button onclick="startGame()"> I accept Challenge </button>
     </div>
-    
+
+    <!-- modal for when player looses all lives -->
     <div class="game-over">
         <h1>Game Over</h1>
-        <p>Welldone! You're here cause you lost your all 3 lives</p>
+        <p> Welldone!</p>
+        <p>You're here because you lost all 3 lives</p>
         <h3>Play again to win the game</h3>
         <button onclick="resetGame()"> Play Again </button>
     </div>
 
+    <!-- Modal for when player wins the game -->
     <div class="winner">
-        <h1>You're a Winner! </h1>
+        <h1>You're a Winner! 🎉 🎉 </h1>
         <p>Yaay! Welldone! You just won!</p>
         <h3>Play again to win again</h3>
         <button onclick="resetGame()"> Play Again </button>
