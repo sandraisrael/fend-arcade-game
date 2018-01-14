@@ -1,35 +1,19 @@
 body {
     text-align: center;
     font-family: 'Gloria Hallelujah', cursive;
-    background-color: #2D1E2F;
+    background-color: #F7B32B;
+}
+
+.header {
     color: #fff;
 }
-.panel{
-    display: flex;
-    margin: 0 30%; 
-}
-.lives{
-    display: inline-block;
-}
-.panel .lives li{
-    list-style: none;
-	display: inline-block;
-}
 
-.live img{
-    height: 30px;
-}
-
-.player-score{
-    margin-left: 15em; 
-}
-
-canvas{
+canvas {
     margin-top: -4em; 
 }
 
-.overlay{
-    background: rgba(0, 0, 0, 0.8);
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
     width: 505px;
     height: 538px;
@@ -50,20 +34,28 @@ canvas{
     right: 0;
     top: 153px;
     width: 420px;
-    height: 400px;
+    height: 410px;
     margin: 0 auto;
     padding: 1em 2em;
+}
+
+.start-game h1, h3, h4 {
+    font-weight: bold; 
+}
+
+.start-game h4 {
+    color: #E3170A;
 }
 
 .start-game button {
     background-color: royalblue;
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 7px 15px;
     font-size: 20px;
     color: #fff;
-    margin-top: 2em;
 }
+
 .hide {
 	visibility: hidden;
 	opacity: 0 !important;
@@ -93,7 +85,7 @@ canvas{
     background-color: royalblue;
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 7px 15px;
     font-size: 20px;
     color: #fff;
     margin-top: 2em;
@@ -119,7 +111,7 @@ canvas{
     background-color: #D62246;
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 7px 15px;
     font-size: 20px;
     color: #fff;
     margin-top: 2em;

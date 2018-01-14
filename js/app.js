@@ -1,14 +1,14 @@
-// declare modal
+// declaring important variable of different modales
 let modal = document.querySelector(".start-game");
 let overlay = document.querySelector(".overlay");
 let gameover = document.querySelector(".game-over");
 let winnerModal = document.querySelector(".winner");
 
-
-
+// points and player lives
 var playerPoints = 0;
 var playerLives = 3;
 
+//this function starts the game
 function startGame(){
     modal.classList.add("hide");
     overlay.classList.add("hide");
@@ -17,20 +17,25 @@ function startGame(){
     playerPoints = 0;
 }
 
+//this is run when player looses all lives
 function gameOver(){
     overlay.classList.add("show");
     gameover.classList.add("show");
 }
+
+// this function resets the game
 function resetGame(){
     window.location.reload(true);
 }
 
+// funtion runs to check lives 
 function checkLives(){
     if (alllives.length === 0){    
         gameOver()
     }
 }
 
+// function for when player gets all 5 keys and wins game
 function youWin(){
     overlay.classList.add("show");
     winnerModal.classList.add("show");
@@ -86,6 +91,7 @@ Player.prototype.update = function(){
     playerY = this.y;
 }
 
+// this draws player on canvas
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
@@ -105,13 +111,11 @@ Player.prototype.handleInput = function(pressedKeys){
         this.y += 80
     }
 };
-
+// to reset player to original position
 Player.prototype.reset = function(){
     this.x = 200;
     this.y = 380;
 }
-
-
 
 // Lives class
 var Lives = function(x, y){
@@ -130,13 +134,13 @@ var Key = function(x, y){
     this.y = y;
     this.sprite = 'images/Key.png';
 }
-
+// draws keys on the canvas
 Key.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 90, 130);
 }
 
 
-//winning block classes to figure out when a player wins
+//winning block class to figure out when a player wins
 var Winblock = function(x, y){
     this.x = x;
     this.y = y
@@ -159,7 +163,7 @@ Winblock.prototype.update = function(){
     } 
 }
 
-// for scoring
+// class to give player points
 var Points = function(x, y, score){
     this.x = x;
     this.y = y;
@@ -183,6 +187,7 @@ var enemyY;
 
 var enemySpeed;
 
+// this is to randomly pick locations for bugs
 setInterval(function instances(){
     // enemyX = columns[Math.floor(Math.random() * 5)],
     enemyX = columns[Math.floor(Math.random() * 5)],
