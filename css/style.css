@@ -6,6 +6,16 @@ body {
 
 .header {
     color: #fff;
+    animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+.header h1:hover, button:hover {
+    animation-name: pulse;
+    -webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .90s;
 }
 
 canvas {
@@ -115,4 +125,19 @@ canvas {
     font-size: 20px;
     color: #fff;
     margin-top: 2em;
+}
+
+/* animations  */
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
 }
