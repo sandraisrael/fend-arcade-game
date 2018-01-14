@@ -56,7 +56,7 @@ var Enemy = function(x, y, speed = 1) {
 // To Update the enemy's position, required method for game-Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
-    this.x += 50 * this.speed * dt;
+    this.x += 100 * this.speed * dt;
     
     // collison detection
     if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
@@ -189,19 +189,17 @@ var enemySpeed;
 
 // this is to randomly pick locations for bugs
 setInterval(function instances(){
-    // enemyX = columns[Math.floor(Math.random() * 5)],
     enemyX = columns[Math.floor(Math.random() * 5)],
     enemyY = rows[Math.floor(Math.random() * 3)],
-    // enemySpeed = Math.floor(Math.random() * 10),
-    enemySpeed = 1,
+    enemySpeed = Math.floor(Math.random() * 15),
     allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed)); 
-},2500)
+},500)
 
 
 
 // Now instantiate your objects.
 // allEnemies- array of all enemy objects 
-var allEnemies = [ new Enemy(-8, 60, 1), new Enemy(0, 140, 1)];
+var allEnemies = [ new Enemy(-8, 60, 3), new Enemy(0, 140, 10), new Enemy(-5, 300, 15)];
 
 // Place the player object in a variable called player
 var player = new Player( 200, 380);
