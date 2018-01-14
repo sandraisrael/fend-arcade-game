@@ -1,11 +1,39 @@
-var playerPoints = 0;
 // declare modal
 let modal = document.querySelector(".start-game");
 let overlay = document.querySelector(".overlay");
+let gameover = document.querySelector(".game-over");
+let winnerModal = document.querySelector(".winner");
+
+
+
+var playerPoints = 0;
+var playerLives = 3;
 
 function startGame(){
     modal.classList.add("hide");
     overlay.classList.add("hide");
+
+    // Initial figures
+    playerPoints = 0;
+}
+
+function gameOver(){
+    overlay.classList.add("show");
+    gameover.classList.add("show");
+}
+function resetGame(){
+    window.location.reload(true);
+}
+
+function checkLives(){
+    if (alllives.length === 0){    
+        gameOver()
+    }
+}
+
+function youWin(){
+    overlay.classList.add("show");
+    winnerModal.classList.add("show");
 }
 
 // Enemies class 
@@ -30,11 +58,12 @@ Enemy.prototype.update = function(dt) {
         console.log("a collision just occured your player diessss");  
         player.reset();
         alllives.pop();
+        playerLives -= 1
         if (playerPoints >= 50){
             playerPoints -= 50;
         }
     }
-
+    checkLives();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -120,14 +149,13 @@ Winblock.prototype.update = function(){
     winblockY = this.y;
 
     if((-Math.abs(winblockY)) == playerY && this.x == playerX){
-        console.log("indomie")
         allKeys.push(new Key(winblockX, winblockY));
         playerPoints += 100;
         player.reset();
     }
     if (allKeys.length == 5){
         console.log("You win Game");
-        player.reset();
+        youWin();
     } 
 }
 
