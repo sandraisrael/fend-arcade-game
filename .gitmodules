@@ -1,0 +1,3 @@
+[submodule "/Users/sandraisrael/Desktop/GitHub/fend-arcade-game/sub-module"]
+	path = /Users/sandraisrael/Desktop/GitHub/fend-arcade-game/sub-module
+	url = https://github.com/uncooloj/node-heroku-static.git
